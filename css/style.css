@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-image:
+    linear-gradient(45deg, #50bcdd 10%, #0059ff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    transition: all 1.25s ease;
+}
+.menu.active .toggle {
+    transform: rotate(360deg);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15),
+    0 0 0 2px #000, 0 0 0 8px #fff;
+}
+
+.menu li {
+    position: absolute;
+    left: 0;
+    transform-origin: 140px;
+    transform: rotate(calc(360deg / 8 * var(--i)));
+    scale: 0;
+    transition: scale 0.5s ease;
+    transition-delay: calc(0.05s * var(--i));
+}
+.menu.active li {
+    scale: 1;
+}
+
+.menu li a {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(calc(360deg / -8 * var(--i)));
+    font-size: 2em;
+    color: var(--clr);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.5s ease;
+}
+.menu li:hover a {
+    box-shadow: 0 0 0 2px var(--clr),
+    0 0 0 8px #fff;
+}
